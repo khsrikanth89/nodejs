@@ -1,8 +1,7 @@
-var WebSocket = require('ws')
-  , ws = new WebSocket('http://localhost:8080');
-ws.on('open', function() {
-    ws.send('something');
-});
-ws.on('message', function(message) {
-    console.log('received: %s', message);
-});
+var ws = require('ws')
+exports.connect = function (server) {
+  var wss = new ws.Server({server: server})
+  wss.on('connection', function (ws) {
+    ws.send('hello!')
+  })
+}

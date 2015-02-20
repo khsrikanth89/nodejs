@@ -13,6 +13,9 @@ angular.module('app')
 				return svc.getUser();
 			});
 		};
+		svc.logout = function () {
+			$http.defaults.headers.common['X-Auth'] = "";
+		};
 		svc.register = function (username, password) {
 			return $http.post('/api/users', {
 				username: username, password: password
@@ -20,5 +23,4 @@ angular.module('app')
 				console.log(val);
 			});
 		};
-
 	});
