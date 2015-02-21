@@ -4,6 +4,7 @@ angular.module('app')
 		svc.getUser = function () {
 			return $http.get('/api/users');
 		};
+
 		svc.login = function (username, password) {
 			return $http.post('/api/sessions', {
 				username: username, password: password
@@ -13,9 +14,11 @@ angular.module('app')
 				return svc.getUser();
 			});
 		};
+
 		svc.logout = function () {
 			$http.defaults.headers.common['X-Auth'] = "";
 		};
+
 		svc.register = function (username, password) {
 			return $http.post('/api/users', {
 				username: username, password: password
